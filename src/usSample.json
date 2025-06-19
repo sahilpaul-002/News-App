@@ -1,0 +1,118 @@
+{
+    "general": {
+        "status": "ok",
+        "totalResults": 32,
+        "articles": [
+            {
+                "source": {
+                    "id": "politico",
+                    "name": "Politico"
+                },
+                "author": "Alex Nieves",
+                "title": "Trump revokes California’s nation-leading electric vehicle mandate - Politico",
+                "description": "The battle over California’s authority to set vehicle emissions standards will now head to the courts.",
+                "url": "https://www.politico.com/news/2025/06/12/trump-revokes-californias-nation-leading-electric-vehicle-mandate-00402601",
+                "urlToImage": "https://static.politico.com/48/98/c6a1c82a49caae9bfc7520ebe8ce/trump-49618.jpg",
+                "publishedAt": "2025-06-12T16:24:39Z",
+                "content": "The president, in a wide-ranging speech before the signing, used the moment to hit on a range of issues, including inflation, his disdain for windmills and his recent fallout with Tesla CEO Elon Musk… [+5040 chars]"
+            },
+            {
+                "source": {
+                    "id": "politico",
+                    "name": "Politico"
+                },
+                "author": "Joe Gould",
+                "title": "Hegseth won’t commit to obeying courts on Marines in Los Angeles - Politico",
+                "description": "The Defense secretary declined to say whether the Pentagon would comply with any judicial order blocking Trump’s domestic troop deployment.",
+                "url": "https://www.politico.com/news/2025/06/12/hegseth-marines-los-angeles-00402794",
+                "urlToImage": "https://static.politico.com/87/b4/9b8335d4423dba2e3005a40792b0/congress-pentagon-hegseth-48523.jpg",
+                "publishedAt": "2025-06-12T16:17:25Z",
+                "content": "Trump has ordered the Pentagon to deploy 4,000 National Guard troops and 700 Marines to Los Angeles to protect Immigration and Customs Enforcement personnel in response to mass deportation protests. … [+1031 chars]"
+            },
+            {
+                "source": {
+                    "id": "the-verge",
+                    "name": "The Verge"
+                },
+                "author": "Tom Warren",
+                "title": "Microsoft’s new Copilot Vision can ‘see’ your apps on Windows - The Verge",
+                "description": "Microsoft is launching Copilot Vision for Windows. It’s a new feature that lets you share your screen or apps to get AI-powered assistance.",
+                "url": "https://www.theverge.com/news/685963/microsoft-copilot-vision-windows-launch",
+                "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/Copilot-Vision-on-Windows.png?quality=90&strip=all&crop=0%2C3.5043662306087%2C100%2C92.991267538783&w=1200",
+                "publishedAt": "2025-06-12T16:00:00Z",
+                "content": "Copilot Vision is now available to all Windows users in the US.\r\nMicrosoft is launching Copilot Vision for Windows today, an extension of its AI assistant that lets you share your screen or apps so t… [+1591 chars]"
+            },
+            {
+                "source": {
+                    "id": null,
+                    "name": "Nintendo Life"
+                },
+                "author": "Ollie Reynolds",
+                "title": "Japanese Charts: Switch 2 Crushes PS2 To Become Fastest-Selling Console Ever - Nintendo Life",
+                "description": "Nearly 1 million consoles sold!",
+                "url": "https://www.nintendolife.com/news/2025/06/japanese-charts-switch-2-crushes-ps2-to-become-fastest-selling-console-ever",
+                "urlToImage": "https://images.nintendolife.com/59bdf11a1b69a/large.jpg",
+                "publishedAt": "2025-06-12T15:45:00Z",
+                "content": "Image: Nintendo Life\r\nThe latest Japanese boxed charts are here, courtesy of Famitsu, and golly gosh, would you believe it, Mario Kart World has stormed to the top with a total of 782,566 copies sold… [+3986 chars]"
+            }
+        ]
+    },
+    "health": {
+        "status": "ok",
+        "totalResults": 32,
+        "articles": [
+            {
+                "source": {
+                    "id": "politico",
+                    "name": "Politico"
+                },
+                "author": "Alex Nieves",
+                "title": "Trump revokes California’s nation-leading electric vehicle mandate - Politico",
+                "description": "The battle over California’s authority to set vehicle emissions standards will now head to the courts.",
+                "url": "https://www.politico.com/news/2025/06/12/trump-revokes-californias-nation-leading-electric-vehicle-mandate-00402601",
+                "urlToImage": "https://static.politico.com/48/98/c6a1c82a49caae9bfc7520ebe8ce/trump-49618.jpg",
+                "publishedAt": "2025-06-12T16:24:39Z",
+                "content": "The president, in a wide-ranging speech before the signing, used the moment to hit on a range of issues, including inflation, his disdain for windmills and his recent fallout with Tesla CEO Elon Musk… [+5040 chars]"
+            },
+            {
+                "source": {
+                    "id": "politico",
+                    "name": "Politico"
+                },
+                "author": "Joe Gould",
+                "title": "Hegseth won’t commit to obeying courts on Marines in Los Angeles - Politico",
+                "description": "The Defense secretary declined to say whether the Pentagon would comply with any judicial order blocking Trump’s domestic troop deployment.",
+                "url": "https://www.politico.com/news/2025/06/12/hegseth-marines-los-angeles-00402794",
+                "urlToImage": "https://static.politico.com/87/b4/9b8335d4423dba2e3005a40792b0/congress-pentagon-hegseth-48523.jpg",
+                "publishedAt": "2025-06-12T16:17:25Z",
+                "content": "Trump has ordered the Pentagon to deploy 4,000 National Guard troops and 700 Marines to Los Angeles to protect Immigration and Customs Enforcement personnel in response to mass deportation protests. … [+1031 chars]"
+            },
+            {
+                "source": {
+                    "id": "the-verge",
+                    "name": "The Verge"
+                },
+                "author": "Tom Warren",
+                "title": "Microsoft’s new Copilot Vision can ‘see’ your apps on Windows - The Verge",
+                "description": "Microsoft is launching Copilot Vision for Windows. It’s a new feature that lets you share your screen or apps to get AI-powered assistance.",
+                "url": "https://www.theverge.com/news/685963/microsoft-copilot-vision-windows-launch",
+                "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/Copilot-Vision-on-Windows.png?quality=90&strip=all&crop=0%2C3.5043662306087%2C100%2C92.991267538783&w=1200",
+                "publishedAt": "2025-06-12T16:00:00Z",
+                "content": "Copilot Vision is now available to all Windows users in the US.\r\nMicrosoft is launching Copilot Vision for Windows today, an extension of its AI assistant that lets you share your screen or apps so t… [+1591 chars]"
+            },
+            {
+                "source": {
+                    "id": null,
+                    "name": "Nintendo Life"
+                },
+                "author": "Ollie Reynolds",
+                "title": "Japanese Charts: Switch 2 Crushes PS2 To Become Fastest-Selling Console Ever - Nintendo Life",
+                "description": "Nearly 1 million consoles sold!",
+                "url": "https://www.nintendolife.com/news/2025/06/japanese-charts-switch-2-crushes-ps2-to-become-fastest-selling-console-ever",
+                "urlToImage": "https://images.nintendolife.com/59bdf11a1b69a/large.jpg",
+                "publishedAt": "2025-06-12T15:45:00Z",
+                "content": "Image: Nintendo Life\r\nThe latest Japanese boxed charts are here, courtesy of Famitsu, and golly gosh, would you believe it, Mario Kart World has stormed to the top with a total of 782,566 copies sold… [+3986 chars]"
+            }
+        ]
+    }
+}

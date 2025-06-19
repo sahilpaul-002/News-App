@@ -1,0 +1,118 @@
+{
+    "business": {
+        "status": "ok",
+        "totalResults": 32,
+        "articles": [
+            {
+                "source": {
+                    "id": null,
+                    "name": "Financial Times"
+                },
+                "author": "James Shotter, Lauren Fedor, Raya Jalabi",
+                "title": "Donald Trump warns Israeli strike on Iran could ‘very well happen’ - Financial Times",
+                "description": "US president ratchets up pressure on Tehran ahead of crunch talks on nuclear programme this weekend",
+                "url": "https://www.ft.com/content/eefb1318-6739-45dd-8d2e-9190da609a9e",
+                "urlToImage": "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F950a7918-9c89-42b8-b215-c2397bd490d3.jpg?source=next-barrier-page",
+                "publishedAt": "2025-06-12T17:51:54Z",
+                "content": "White House Watch newsletter\r\nSign up for your free, indispensable guide to what Trumps second term means for Washington, business and the world."
+            },
+            {
+                "source": {
+                    "id": "the-washington-post",
+                    "name": "The Washington Post"
+                },
+                "author": "Christian Davenport",
+                "title": "NASA postpones launch while it investigates space station leaks - The Washington Post",
+                "description": "NASA said Thursday it was postponing a launch of private astronauts to the International Space Station while it works with its Russian counterparts to investigate persistent leaks on the orbiting laboratory.",
+                "url": "https://www.washingtonpost.com/technology/2025/06/12/nasa-axiom-iss-leaks/",
+                "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/6YQYG76QHH7UMTEUCB42EGPK6I.jpg&w=1440",
+                "publishedAt": "2025-06-12T17:47:22Z",
+                "content": "NASA said Thursday it was postponing a launch of private astronauts to the International Space Station while it works with its Russian counterparts to investigate persistent leaks on the orbiting lab… [+2431 chars]"
+            },
+            {
+                "source": {
+                    "id": "techcrunch",
+                    "name": "TechCrunch"
+                },
+                "author": "Julie Bort",
+                "title": "Chime almost died in 2016, turned down by 100 VCs. Today it IPO’d at $14.5B. - TechCrunch",
+                "description": "In 2016 when Chime desperately needed cash, over 100 VCs said no. One seed VC took a chance and saved the company, co-founder Ryan King recalls.",
+                "url": "https://techcrunch.com/2025/06/12/chime-almost-died-in-2016-turned-down-by-100-vcs-today-it-ipod-at-14-5b/",
+                "urlToImage": "https://techcrunch.com/wp-content/uploads/2025/06/Chime-Nasdaq.png?resize=1200,713",
+                "publishedAt": "2025-06-12T17:23:17Z",
+                "content": "One of the years most anticipated IPOs took place on Thursday when neobank Chime raised $864 million in its IPO, pricing its shares at $27, which is above its previously announced range of $24 to $26… [+3842 chars]"
+            },
+            {
+                "source": {
+                    "id": "axios",
+                    "name": "Axios"
+                },
+                "author": "Stef W. Kight",
+                "title": "Inside the Senate GOP's heated meeting with Stephen Miller - Axios",
+                "description": "The border has long been a top, unifying issue for Republicans. Now it's a point of drama.",
+                "url": "https://www.axios.com/2025/06/12/stephen-miller-senate-republicans-border",
+                "urlToImage": "https://images.axios.com/_0pivcOD0JCX6TyBTi1Q24VJq08=/0x398:8189x5004/1366x768/2025/06/12/1749745978542.jpg",
+                "publishedAt": "2025-06-12T16:39:02Z",
+                "content": "<ul><li>Paul was not physically in the room with Miller, but his presence was overwhelming. </li><li>Two sources described the meeting as heated and shared frustrations that Paul was using his power … [+1822 chars]"
+            }
+        ]
+    },
+    "general" : {
+        "status": "ok",
+        "totalResults": 32,
+        "articles": [
+            {
+                "source": {
+                    "id": null,
+                    "name": "Financial Times"
+                },
+                "author": "James Shotter, Lauren Fedor, Raya Jalabi",
+                "title": "Donald Trump warns Israeli strike on Iran could ‘very well happen’ - Financial Times",
+                "description": "US president ratchets up pressure on Tehran ahead of crunch talks on nuclear programme this weekend",
+                "url": "https://www.ft.com/content/eefb1318-6739-45dd-8d2e-9190da609a9e",
+                "urlToImage": "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F950a7918-9c89-42b8-b215-c2397bd490d3.jpg?source=next-barrier-page",
+                "publishedAt": "2025-06-12T17:51:54Z",
+                "content": "White House Watch newsletter\r\nSign up for your free, indispensable guide to what Trumps second term means for Washington, business and the world."
+            },
+            {
+                "source": {
+                    "id": "the-washington-post",
+                    "name": "The Washington Post"
+                },
+                "author": "Christian Davenport",
+                "title": "NASA postpones launch while it investigates space station leaks - The Washington Post",
+                "description": "NASA said Thursday it was postponing a launch of private astronauts to the International Space Station while it works with its Russian counterparts to investigate persistent leaks on the orbiting laboratory.",
+                "url": "https://www.washingtonpost.com/technology/2025/06/12/nasa-axiom-iss-leaks/",
+                "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/6YQYG76QHH7UMTEUCB42EGPK6I.jpg&w=1440",
+                "publishedAt": "2025-06-12T17:47:22Z",
+                "content": "NASA said Thursday it was postponing a launch of private astronauts to the International Space Station while it works with its Russian counterparts to investigate persistent leaks on the orbiting lab… [+2431 chars]"
+            },
+            {
+                "source": {
+                    "id": "techcrunch",
+                    "name": "TechCrunch"
+                },
+                "author": "Julie Bort",
+                "title": "Chime almost died in 2016, turned down by 100 VCs. Today it IPO’d at $14.5B. - TechCrunch",
+                "description": "In 2016 when Chime desperately needed cash, over 100 VCs said no. One seed VC took a chance and saved the company, co-founder Ryan King recalls.",
+                "url": "https://techcrunch.com/2025/06/12/chime-almost-died-in-2016-turned-down-by-100-vcs-today-it-ipod-at-14-5b/",
+                "urlToImage": "https://techcrunch.com/wp-content/uploads/2025/06/Chime-Nasdaq.png?resize=1200,713",
+                "publishedAt": "2025-06-12T17:23:17Z",
+                "content": "One of the years most anticipated IPOs took place on Thursday when neobank Chime raised $864 million in its IPO, pricing its shares at $27, which is above its previously announced range of $24 to $26… [+3842 chars]"
+            },
+            {
+                "source": {
+                    "id": "axios",
+                    "name": "Axios"
+                },
+                "author": "Stef W. Kight",
+                "title": "Inside the Senate GOP's heated meeting with Stephen Miller - Axios",
+                "description": "The border has long been a top, unifying issue for Republicans. Now it's a point of drama.",
+                "url": "https://www.axios.com/2025/06/12/stephen-miller-senate-republicans-border",
+                "urlToImage": "https://images.axios.com/_0pivcOD0JCX6TyBTi1Q24VJq08=/0x398:8189x5004/1366x768/2025/06/12/1749745978542.jpg",
+                "publishedAt": "2025-06-12T16:39:02Z",
+                "content": "<ul><li>Paul was not physically in the room with Miller, but his presence was overwhelming. </li><li>Two sources described the meeting as heated and shared frustrations that Paul was using his power … [+1822 chars]"
+            }
+        ]
+    }
+}
