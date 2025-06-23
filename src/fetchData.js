@@ -4,8 +4,8 @@ const fetchAllNewsData = async (country, pageSize) => {
         method: 'GET',
         headers: {
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
-            'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
+            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }
     });
@@ -24,8 +24,8 @@ const fetchAllCategoryNewsData = async (country, pageSize) => {
             method: 'GET',
             headers: {
                 // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-                // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
-                'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
+                'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+                // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
                 // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
             }
         })
@@ -40,8 +40,8 @@ const fetchCategoryCountryData = async({params}) => {
         method: 'GET',
         headers: {
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
-            'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
+            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }
     });
@@ -54,8 +54,8 @@ const fetchMoreCategoryCountryData = async(country, category, pageSize) => {
         method: 'GET',
         headers: {
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
-            'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
+            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }
     });

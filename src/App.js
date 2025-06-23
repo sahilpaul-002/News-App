@@ -90,10 +90,12 @@ function App() {
       <Navbar title="NewsApp" mode={mode} switchMode={switchMode}/>  {/* mode={mode} toggleMode={toggleMode} */}
       <Alert alert={alert} dismissAlert={() => {setAlert(null)}}/>
       <div className="container mb-3" style={{ minHeight: "100vh" }}>
+        
         {/*   Display spinner logic due to navigating using loader */}
-        {/* {isNavigating ? <Spinner /> : <Outlet />} */}
-        {isNavigating && <Spinner />}
-        <Outlet context={{mode}} />
+        {isNavigating ? <Spinner /> : <Outlet context={{mode}} />}
+        
+        {/* {isNavigating && <Spinner />} */}
+        {/* <Outlet context={{mode}} /> */}
         </div>
       <Footer mode={mode}/>
     </>

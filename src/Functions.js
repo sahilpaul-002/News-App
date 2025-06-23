@@ -50,21 +50,21 @@ function handleNewsContent(content) {
 }
 
 // Function to fetch the articles based on country
-const fetchLandingNewsArticle = (country, indiaAllData, usAllData, chinaAllData) => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            if (country === "India") {
-                resolve(indiaAllData.articles);
-            } else if (country === "US") {
-                resolve(usAllData.articles);
-            } else {
-                resolve(chinaAllData.articles);
-            }
-        }, 2000); // 2 seconds delay
-    });
-};
+// const fetchLandingNewsArticle = (country, indiaAllData, usAllData, chinaAllData) => {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             if (country === "India") {
+//                 resolve(indiaAllData.articles);
+//             } else if (country === "US") {
+//                 resolve(usAllData.articles);
+//             } else {
+//                 resolve(chinaAllData.articles);
+//             }
+//         }, 2000); // 2 seconds delay
+//     });
+// };
 
-// Function to shaloow copy the to country wise article element indexes
+// Function to shalow copy the to country wise article element indexes
 const getCountryArticleIndexArray = (country, expandedIndexes) => {
     if (country === "India") {
         return expandedIndexes.indiaExpandedIds;
@@ -78,22 +78,21 @@ const getCountryArticleIndexArray = (country, expandedIndexes) => {
 }
 
 // Function to fetch the articles based on country
-const fetchNewsArticle = (country, indiaData, usData, chinaData) => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            if (country === "India") {
-                resolve(indiaData);
-            } else if (country === "US") {
-                resolve(usData);
-            } else {
-                resolve(chinaData);
-            }
-        }, 2000); // 2 seconds delay
-    });
-};
+// const fetchNewsArticle = (country, indiaData, usData, chinaData) => {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             if (country === "India") {
+//                 resolve(indiaData);
+//             } else if (country === "US") {
+//                 resolve(usData);
+//             } else {
+//                 resolve(chinaData);
+//             }
+//         }, 2000); // 2 seconds delay
+//     });
+// };
 
 
 export {
     capitalize, handleNewsTitle, handelNewsDescription, calculatePublishTime, handleNewsContent, getCountryArticleIndexArray,
-    fetchLandingNewsArticle, fetchNewsArticle
 };

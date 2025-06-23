@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { capitalize, calculatePublishTime } from '../Functions';
+import { capitalize, calculatePublishTime, handleNewsContent } from '../Functions';
 import { Link, useOutletContext, useParams, useLoaderData } from "react-router-dom";
 import { newsLinkStyle } from "../Style"
 import { fetchMoreCategoryCountryData } from "../fetchData"
@@ -73,7 +73,7 @@ export default function Category() {
                 <div className="col-md-8">
                   <div className="card-body">
                     <Link to={article.url} target="_blank" rel="noopener noreferrer" onMouseOver={() => sethoveredLinkIndex(idx)} onMouseOut={() => sethoveredLinkIndex(null)} style={newsLinkStyle(hoveredLinkIndex === idx, mode)}><h5 className="card-title">{article.title}</h5></Link>
-                    <p className="card-text">{article.content}</p>
+                    <p className="card-text">{handleNewsContent(article.content)}</p>
                     <p className="card-text"><small className="text-body-secondary"><i>{calculatePublishTime(article.publishedAt)}</i></small></p>
                   </div>
                 </div>

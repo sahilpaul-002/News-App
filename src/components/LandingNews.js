@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { handleNewsContent, getCountryArticleIndexArray } from '../Functions';
-// import indiaAllData from '../indiaAllSample';
-// import usAllData from '../usAllSample';
-// import chinaAllData from '../chinaAllSample';
 import { countryButtonStyle, newsLinkStyle, articleTitleStyle } from "../Style"
 import { Link } from 'react-router-dom';
 import { fetchAllNewsData } from "../fetchData";
