@@ -19,7 +19,7 @@ export default function Home() {
                         <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="5" aria-label="Slide 6"></button>
                         <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="6" aria-label="Slide 7"></button>
                     </div>
-                    <div className="carousel-item active" data-bs-interval="5000" style={{height: '70vh', overflow: 'hidden',}}>
+                    <div className="carousel-item active" data-bs-interval="3000" style={{height: '70vh', overflow: 'hidden',}}>
                         <img src="/Images/businessNews.jpeg" className="d-block w-100 opacity-75" alt="Business News" style={{width: '100%', height: '100%', objectFit: 'cover'}}/>
                         <div className="carousel-caption d-none d-md-block">
                             <h3>Business</h3>

@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import NewsItem from "./NewsItem"
-import indiaData from '../indiaSample';
-import usData from '../usSample';
-import chinaData from '../chinaSample';
-import { fetchNewsArticle } from "../Functions"
-import {countryButtonStyle} from "../Style"
+import { fetchAllCategoryNewsData } from "../fetchData"
+import { countryButtonStyle } from "../Style"
 import { NavLink, useOutletContext } from 'react-router-dom';
+import NewsItem from "./NewsItem";
 
 export default function News() {
     const { mode } = useOutletContext();
@@ -46,15 +43,51 @@ export default function News() {
         // Only run when articles is null (i.e., loading state)
         if (newsCardInfo.newsArticles === null) {
             const loadArticles = async () => {
-                const data = await fetchNewsArticle(newsCardInfo.countryName, indiaData, usData, chinaData);
-                setnewsCardInfo(prev => ({
-                    ...prev,
-                    newsArticles: data
-                }));
-            };
+                const data = await fetchAllCategoryNewsData(newsCardInfo.countryName, 5);
+                const categories = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
+                for (let category of categories) {
+
+                    if (data[category].status === "error") {
+                        console.log(`Erroer section - All news page ${newsCardInfo.countryName} articles ; Status : ${data[category].status}`);
+                        console.log(`Error code: ${data.code}`)
+                        console.log(`Error message - ${data.message}`);
+                        // setNoNews(true);
+                        setTimeout(() => setNoNews(true), 3000);
+                    }
+                    else if (data[category].status === "ok" && data[category].totalResults > 0) {
+                        setnewsCardInfo(prev => ({
+                            ...prev,
+                            newsArticles: data
+                        }));
+                        setTimeout(() => setNoNews(true), 2000);
+                        setnoNewsCountry(null);
+
+                    }
+                    else if (data[category].status === "ok" && data[category].totalResults === 0) {
+                        console.log(`no news ${newsCardInfo.countryName}`)
+                        // setnoNewsCountry(newsCardInfo.countryName);
+                        setTimeout(() => setNoNews(true), 2000);
+                    }
+                };
+            }
             loadArticles();
         }
     }, [newsCardInfo.countryName, newsCardInfo.newsArticles]); // Trigger fetch whenever country changes
+
+    // State to determine the no news
+    const [noNews, setNoNews] = useState(false);
+
+    // State to determine news available for country
+    const [noNewsCountry, setnoNewsCountry] = useState(null);
+
+    useEffect(() => {
+        if (noNews) {
+            setTimeout(() => {
+                setnoNewsCountry(newsCardInfo.countryName);
+            }, 2000);
+        }
+        setNoNews(false);
+    }, [noNews, newsCardInfo.countryName])
 
     return (
         <div className='container px-2 py-3'>
@@ -63,7 +96,7 @@ export default function News() {
 
             {/*   Country Tabs   */}
             <div className="container">
-                <ul className="nav nav-tabs" htmlFor="nav-tabContent" id='nav-countryTabs' aria-controls='nav-India'>
+                <ul className="nav nav-tabs" htmlFor="nav-tabContent" id='nav-countryTabs' aria-controls='nav-India' style={{ border: "none" }}>
                     <li className="nav-item">
                         <button type="button" className={`btn btn-light ${newsCardInfo.countryName === "India" ? "show active" : ""}`} aria-current="page" role="tab" id='tab-India' onClick={() => handleCountry("India")} onMouseOver={() => handleMouseOver("India")} onMouseOut={() => handleMouseOut()} onFocus={() => handleFocus("India")} style={countryButtonStyle("India", isMouseOver, isFocus, mode)}>India</button>
                     </li>
@@ -77,30 +110,33 @@ export default function News() {
             </div>
 
             {newsCardInfo.newsArticles !== null ? (
-                Object.entries(newsCardInfo.newsArticles).map(([category, ObjectArticles]) => (
+                Object.entries(newsCardInfo.newsArticles).map(([category, ObjectArticles], i, arr) => (
                     <div className="container tab-content" id="nav-tabContent" key={category}>
                         <div className="tab-pane fade show active" id={`nav-${newsCardInfo.countryName}`}
                             role="tabpanel" aria-labelledby={`tab-${newsCardInfo.countryName}-${category}`}>
                             {/*   News cards display   */}
                             {ObjectArticles !== null ? (
-                                <div className="container row">
-                                    {ObjectArticles.articles.slice(0, 4).map((article, idx) => (
-                                        <div className="col-md-3 mb-3" key={idx}>
-                                            <NewsItem
-                                                urlToImage={article.urlToImage}
-                                                title={article.title}
-                                                description={article.description}
-                                                category={category}
-                                                url={article.url}
-                                                publishedAt={article.publishedAt}
-                                            />
-                                        </div>
-                                    ))}
-                                    <div className="container d-flex flex-row-reverse my-3">
-                                        <NavLink className="btn btn-outline-secondary p-2"
-                                            to={`category/${newsCardInfo.countryName}/${category}`} role="button">View More</NavLink>
+                                <div className="container row d-flex justify-content-center">
+                                    <div className="row w-auto">
+                                        {ObjectArticles.articles.slice(0, 3).map((article, idx) => (
+                                            <div className="col-md-4 mb-3" key={idx}>
+                                                <NewsItem
+                                                    urlToImage={article.urlToImage}
+                                                    title={article.title}
+                                                    description={article.description}
+                                                    category={category}
+                                                    url={article.url}
+                                                    publishedAt={article.publishedAt}
+                                                    mode={mode}
+                                                />
+                                            </div>
+                                        ))}
                                     </div>
-                                    <hr className='border border-dark' />
+                                    <div className="container d-flex justify-content-center my-3">
+                                        <NavLink className={`btn ${mode.theme === "light" ? "btn btn-success" : "btn-outline-success"} p-2`}
+                                            to={`category/${newsCardInfo.countryName}/${category}`} role="button" style={{ color: "white", borderColor: "white" }}>View More</NavLink>
+                                    </div>
+                                    {i !== arr.length - 1 && (<hr className='my-3' style={{ ...(mode.theme === "light" ? { border: "none", margin: "auto", height: "1px", width: "80%", backgroundColor: "black", opacity: "0.8" } : { border: "none", margin: "auto", height: "1px", width: "80%", backgroundColor: "white", opacity: "08" }) }} />)}
                                 </div>
                             ) : (
                                 <div className="d-flex justify-content-center">
@@ -112,14 +148,19 @@ export default function News() {
                         </div>
                     </div>
                 ))
-            ) : (
-                <div className="d-flex justify-content-center">
-                    <div className="spinner-border my-5" style={{ width: "3rem", height: "3rem" }} role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            )}
-
+            ) :
+                (
+                    noNewsCountry === newsCardInfo.countryName) ?
+                    (
+                        <p className="text-center mt-5">No news found</p>
+                    ) :
+                    (
+                        <div className="d-flex justify-content-center">
+                            <div className="spinner-border my-5" style={{ width: "3rem", height: "3rem" }} role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    )}
         </div >
     )
 }

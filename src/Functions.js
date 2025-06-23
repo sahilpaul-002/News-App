@@ -5,11 +5,11 @@ const capitalize = (text) => {
 }
 // Formating the News Title
 const handleNewsTitle = (text) => {
-    return text.split(" - ")[0].split(" ").slice(0, 10).join(" ") + "...";
+    return (text===null?"No title : View the detail news":text.split(" - ")[0].split(" ").slice(0, 10).join(" ") + "...");
 }
 // Formating the news descripotion
 const handelNewsDescription = (text) => {
-    return text.split(" ").slice(0, 8).join(" ") + "...";
+    return (text===null?"No description : View the detail news":text.split(" ").slice(0, 8).join(" ") + "...");
 }
 // Calculate Upload time
 const calculatePublishTime = (inputUtcString) => {
@@ -32,7 +32,7 @@ const calculatePublishTime = (inputUtcString) => {
     // If more than 24 hours, show days only
     if (days >= 1) {
         const direction = diffMs >= 0 ? "ago" : "from now";
-        return `Published ${days} day${days > 1 ? "s" : ""} ${direction}`;
+        return (inputUtcString?"":`Published ${days} day${days > 1 ? "s" : ""} ${direction}`);
     }
 
     // Otherwise, show hours, minutes, seconds
@@ -41,12 +41,12 @@ const calculatePublishTime = (inputUtcString) => {
     const seconds = diffSeconds % 60;
     const direction = diffMs >= 0 ? "ago" : "from now";
 
-    return `PUblished ${hours}h ${minutes}m ${seconds}s ${direction}`;
+    return (inputUtcString===null?"":`PUblished ${hours}h ${minutes}m ${seconds}s ${direction}`);
 }
 // Formating news content
 function handleNewsContent(content) {
     // Remove any text that matches "… [+xxxx chars]" or just "…"
-    return content.replace(/…\s*\[\+\d+\s+chars\]$/, '').trim();
+    return (content===null?"No content: View detail news":content.replace(/…\s*\[\+\d+\s+chars\]$/, '').trim());
 }
 
 // Function to fetch the articles based on country

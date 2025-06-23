@@ -12,20 +12,20 @@ export default function NewsItem(props) {
     }, []);
 
     // Destructuring the props
-    const { urlToImage, title, description, category, url, publishedAt } = props;
+    const { urlToImage, title, description, category, url, publishedAt, mode } = props;
     return (
         <>
-            <div className="my3 pt-3">
-                <div className="card" style={{ width: "18rem", height: "26rem" }}>
+            <div className="my3 pt-3 px-5">
+                <div className="card" style={{ ...(mode.theme==="light"?{width: "18rem", height: "26rem"}:{border:"none", width: "18rem", height: "26rem"}) }}>
                     <img src={urlToImage} className="card-img-top" alt={`${category}-Image`} style={{ objectFit: 'cover', height: '180px' }} />
                     <div className="card-body">
                         <h6 className="card-title" style={{height: "3rem"}}>{handleNewsTitle(title)}</h6>
-                        <h6 className="card-subtitle mb-2 text-body-secondary pt-2"><u>{capitalize(category)}</u></h6>
+                        <h6 className="card-subtitle my-2 text-body-secondary pt-2"><u>{capitalize(category)}</u></h6>
                         <p className="card-text" data-bs-toggle="tooltip" data-bs-placement="bottom" 
                             data-bs-title={description} style={{height: "3rem"}}>{handelNewsDescription(description)}</p>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <a href={url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">Read More</a>
-                            <p className="mb-0 fs-6">{publishedAt.slice(0, 10).split("").reverse().join("")}</p>
+                            <a href={url} className="btn btn-danger" target="_blank" rel="noopener noreferrer">Read More</a>
+                            <p className="mb-0 fs-6">{publishedAt.slice(0, 10).split("").join("").split("-").reverse().join("-")}</p>
                         </div>
                     </div>
             </div>

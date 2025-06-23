@@ -76,10 +76,10 @@ const articleTitleStyle = (idx, idxArray) => {
     // let idxArray = getCountryArticleIndexArray(country, expandedIndexes)
     if (idxArray.includes(idx)) {
         return {
-            backgroundColor: "red",
+            backgroundColor: "#D84040",
             color: "white",
-            otline: "none",
-            boxShadow: "none"
+            outline: "none",
+            boxShadow: "none",
         };
     }
     else {
@@ -90,5 +90,46 @@ const articleTitleStyle = (idx, idxArray) => {
     }
 }
 
+// Style for country-category in the navbar dropdown
+const navbarDropdownStyle = (isActive, mode) => {
+    if (isActive) {
+        return {
+            backgroundColor: "#74c69d",
+            color: "white",
+            outline: "none",
+            boxShadow: "none",
+            userSelect: "none",
+        };
+    } else {
+        return {
+            backgroundColor: "transparent",
+            color: mode.theme === "light" ? "black" : "white",
+        };
+    }
+};
 
-export { countryButtonStyle, newsLinkStyle, articleTitleStyle };
+//Card style for dark and light mode
+const outerCardStyle =(mode) => {
+    return {
+        backgroundColor: mode.theme === "dark" ? "#343a40" : "#CAE8BD",
+        color: mode.theme === "dark" ? "white" : "black",
+    }
+};
+
+//Card style for dark and light mode
+const innerCardStyle = (mode) => {
+    return {
+        backgroundColor: mode.theme === "dark" ? "#343a40" : "#CAE8BD",
+        color: mode.theme === "dark" ? "white" : "black",
+        border: mode.theme === "dark" ? "1px solid grey" : ""
+    }
+};
+// Card body style
+const bodyCardStyle = (mode) => {
+    return {
+        backgroundColor: mode.theme === "dark" ? "#254D70" : "#9FC87E",
+        color: mode.theme === "dark" ? "white" : "black"
+    }
+}
+
+export { countryButtonStyle, newsLinkStyle, articleTitleStyle, navbarDropdownStyle, outerCardStyle, innerCardStyle, bodyCardStyle };

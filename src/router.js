@@ -4,15 +4,7 @@ import Home from "./components/Home"
 import News from "./components/News";
 import Category from "./components/Category";
 import About from "./components/About";
-import indiaSampleData from "./indiaSample.json"
-
-const getArticles = (category) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(indiaSampleData[category].articles)
-    }, 2000);
-  });
-};
+import { fetchCategoryCountryData } from "./fetchData"
 
 const Router = createBrowserRouter([
   {
@@ -29,10 +21,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "news/category/:country/:category",
-        loader: async ({ params }) => {
-          const categoryArticles = await getArticles(params.category);
-          return { categoryArticles: categoryArticles };
-          },
+        loader: fetchCategoryCountryData,
+        // loader: async ({ params }) => {
+        //   const categoryArticles = await getArticles(params.category);
+        //   return { categoryArticles: categoryArticles };
+        //   },
         // lazy: async () => {
         //   const [{ default: Category }, { default: loader }] = await Promise.all([
         //     import("./components/Category"),   // the route component
