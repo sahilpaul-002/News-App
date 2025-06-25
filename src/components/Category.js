@@ -5,9 +5,15 @@ import { newsLinkStyle } from "../Style"
 import { fetchMoreCategoryCountryData } from "../fetchData"
 
 export default function Category() {
-  const { mode } = useOutletContext();
+  const { mode, progress, setProgress } = useOutletContext();
   const { country, category } = useParams(); // For URL info
   const { data } = useLoaderData(); // This gets the returned articles
+
+  useEffect(() => {
+    if (progress > 0 && progress < 100) {
+      setProgress(prev => prev + 50)
+    }
+  }, [progress, setProgress])
 
   // State to store the data of api
   const [categoryData, setCategoryData] = useState(data);
@@ -45,19 +51,25 @@ export default function Category() {
           console.log(`Error message - ${categoryData.message}`);
           setTimeout(() => setNoNewsCategory(true), 2000);
         } else if (categoryData.status === "ok" && categoryData.totalResults > 0 && Array.isArray(categoryData.articles)) {
+          setTotalArticlesFetched(prev => prev + categoryData.articles.length)
           setCategoryData(categoryData)
           setPageSize(newPageSize); // Only update after data is added
         } else if (categoryData.totalResults === 0) {
           setTimeout(() => setNoNewsCategory(true), 2000);
         }
-        setLoadMore(false); 
+        setLoadMore(false);
       };
       loadArticles();
     }
-  }, [loadMore,categoryData, category, country, data , pageSize]);
+  }, [loadMore, categoryData, category, country, data, pageSize]);
+
+  // Store the total noumber of articles for the category
+  const totalArticles = data.totalResults;
+  // State to store the total results fetched from the api
+  const [totalArticlesFetched, setTotalArticlesFetched] = useState(0);
 
   return (
-    <>
+    <div className="container mt-5">
       <h1>News : {country}-{capitalize(category)}</h1>
       <hr className='my-3' style={{ ...(mode.theme === "light" ? { border: "none", height: "3px", backgroundColor: "black", opacity: "0.8" } : { border: "none", height: "3px", backgroundColor: "white", opacity: "08" }) }} />
 
@@ -65,10 +77,10 @@ export default function Category() {
       {categoryData.articles.length !== 0 ? (
         categoryData.articles.map((article, idx) => (
           <div className="container px-3 py-2" key={idx}>
-            <div className="card mb-3" style={{ maxWidth: "100rem" }}>
+            <div className="card mb-3" style={{ maxWidth: "100rem"}}>
               <div className="row g-0">
                 <div className="col-md-3">
-                  <img src={article.urlToImage} className="img-fluid rounded-start" alt="News" />
+                  <img src={article.urlToImage !== null ? article.urlToImage : "/Images/generalNews.jpeg"} className="img-fluid rounded-start" alt="News" />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -103,19 +115,19 @@ export default function Category() {
           </div>
         ) : (
           <div className="container d-flex justify-content-center my-3">
-            <div
+            <button
               className={`btn ${mode.theme === "light" ? "btn btn-danger" : "btn-outline-danger"} p-2`}
-              role="button"
+              disabled={totalArticlesFetched > totalArticles ? true : false}
               onClick={() => setLoadMore(true)}
               style={{ color: "white", borderColor: "white" }}
             >
               View More
-            </div>
+            </button>
           </div>
         )
       ) : (
         ""
       )}
-    </>
+    </div>
   )
 }

@@ -15,7 +15,7 @@ export default function NewsItem(props) {
     const { urlToImage, title, description, category, url, publishedAt, mode } = props;
     return (
         <>
-            <div className="my3 pt-3 px-5">
+            <div className="my3 pt-3">
                 <div className="card" style={{ ...(mode.theme==="light"?{width: "18rem", height: "26rem"}:{border:"none", width: "18rem", height: "26rem"}) }}>
                     <img src={urlToImage} className="card-img-top" alt={`${category}-Image`} style={{ objectFit: 'cover', height: '180px' }} />
                     <div className="card-body">

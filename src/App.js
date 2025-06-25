@@ -4,9 +4,13 @@ import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 import Alert from './components/Alert';
 import Spinner from "./components/Spinner";
-import { Outlet, useNavigation } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
+import { Outlet, useNavigation, useLocation } from "react-router-dom";
 
 function App() {
+  // State to store the loading progress bar animation
+  const [progress, setProgress] = useState(0);
+  
   // Get the navigation state while navigating using loader
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
@@ -85,17 +89,37 @@ function App() {
     };
   },[alert]);
 
+  //
+  const [generalNewsCountry, setGeneralNewsCountry] = useState({
+    viewMoreActive: false,
+    country: null
+  })
+  const location = useLocation();
+  useEffect(() => {
+    if (!location.pathname.includes("/news/category/US/general")) {
+      // Navigated away from General US — reset the flag
+      setGeneralNewsCountry({ isActive: false, country: null });
+    }
+  }, [location.pathname]);
+
   return (
     <>
-      <Navbar title="NewsApp" mode={mode} switchMode={switchMode}/>  {/* mode={mode} toggleMode={toggleMode} */}
+      {/*   Loading progress bar above the navbar component whose state is controlled from each of the components   */}
+      <LoadingBar
+        color="red"
+        height={"3px"}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
+      <Navbar title="NewsApp" mode={mode} switchMode={switchMode} progress={progress} setProgress={setProgress} generalNewsCountry={generalNewsCountry}/>  {/* mode={mode} toggleMode={toggleMode} */}
       <Alert alert={alert} dismissAlert={() => {setAlert(null)}}/>
       <div className="container mb-3" style={{ minHeight: "100vh" }}>
         
         {/*   Display spinner logic due to navigating using loader */}
-        {isNavigating ? <Spinner /> : <Outlet context={{mode}} />}
+        {isNavigating ? <Spinner /> : <Outlet context={{ mode, progress, setProgress, generalNewsCountry, setGeneralNewsCountry }} />}
         
         {/* {isNavigating && <Spinner />} */}
-        {/* <Outlet context={{mode}} /> */}
+        {/* <Outlet context={{mode}} /> */} {/* While new page is loaded the, for loader functions spinner will display above the old page UI */}
         </div>
       <Footer mode={mode}/>
     </>

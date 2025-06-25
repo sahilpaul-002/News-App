@@ -1,10 +1,13 @@
+const apiKey = process.env.REACT_APP_NEWS_API;
+
 const fetchAllNewsData = async (country, pageSize) => {
     const countryCode = { India: "IN", US: "US", China: "CN" };
     let rawData = await fetch(`https://newsapi.org/v2/top-headlines?country=${countryCode[country]}&pageSize=${pageSize}`, {
         method: 'GET',
         headers: {
+            'Authorization': `Bearer ${apiKey}`
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
             // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }
@@ -23,8 +26,9 @@ const fetchAllCategoryNewsData = async (country, pageSize) => {
         let rawData = await fetch(`https://newsapi.org/v2/top-headlines?country=${countryCode[country]}&category=${category}&pageSize=${pageSize}`, {
             method: 'GET',
             headers: {
+                'Authorization': `Bearer ${apiKey}`
                 // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-                'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+                // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
                 // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
                 // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
             }
@@ -39,8 +43,9 @@ const fetchCategoryCountryData = async({params}) => {
   let rawData = await fetch(`https://newsapi.org/v2/top-headlines?country=${params.country}&category=${params.category}&pageSize=6`, {
         method: 'GET',
         headers: {
+            'Authorization': `Bearer ${apiKey}`
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
             // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }
@@ -53,8 +58,9 @@ const fetchMoreCategoryCountryData = async(country, category, pageSize) => {
   let rawData = await fetch(`https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${[pageSize]}`, {
         method: 'GET',
         headers: {
+            'Authorization': `Bearer ${apiKey}`
             // 'Authorization': 'Bearer 9ab76c5c8915413f9b2c84a22239ff4b'
-            'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
+            // 'Authorization': 'Bearer e5c4709fb81d44bbaac857c057d9ec0d' 
             // 'Authorization': 'Bearer 6632ff5df9cd4eeab4a11b639119c211'
             // 'Authorization': 'Bearer ef877b2cae9e4acf8555bc6404d50a79'
         }

@@ -32,7 +32,7 @@ const calculatePublishTime = (inputUtcString) => {
     // If more than 24 hours, show days only
     if (days >= 1) {
         const direction = diffMs >= 0 ? "ago" : "from now";
-        return (inputUtcString?"":`Published ${days} day${days > 1 ? "s" : ""} ${direction}`);
+        return (inputUtcString===null?"":`Published ${days} day${days > 1 ? "s" : ""} ${direction}`);
     }
 
     // Otherwise, show hours, minutes, seconds
@@ -40,29 +40,13 @@ const calculatePublishTime = (inputUtcString) => {
     const minutes = Math.floor((diffSeconds % 3600) / 60);
     const seconds = diffSeconds % 60;
     const direction = diffMs >= 0 ? "ago" : "from now";
-
-    return (inputUtcString===null?"":`PUblished ${hours}h ${minutes}m ${seconds}s ${direction}`);
+    return (inputUtcString===null?"":`Published ${hours}h ${minutes}m ${seconds}s ${direction}`);
 }
 // Formating news content
 function handleNewsContent(content) {
     // Remove any text that matches "… [+xxxx chars]" or just "…"
     return (content===null?"No content: View detail news":content.replace(/…\s*\[\+\d+\s+chars\]$/, '').trim());
 }
-
-// Function to fetch the articles based on country
-// const fetchLandingNewsArticle = (country, indiaAllData, usAllData, chinaAllData) => {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             if (country === "India") {
-//                 resolve(indiaAllData.articles);
-//             } else if (country === "US") {
-//                 resolve(usAllData.articles);
-//             } else {
-//                 resolve(chinaAllData.articles);
-//             }
-//         }, 2000); // 2 seconds delay
-//     });
-// };
 
 // Function to shalow copy the to country wise article element indexes
 const getCountryArticleIndexArray = (country, expandedIndexes) => {
@@ -76,22 +60,6 @@ const getCountryArticleIndexArray = (country, expandedIndexes) => {
         return expandedIndexes.chinaExpandedIds
     }
 }
-
-// Function to fetch the articles based on country
-// const fetchNewsArticle = (country, indiaData, usData, chinaData) => {
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             if (country === "India") {
-//                 resolve(indiaData);
-//             } else if (country === "US") {
-//                 resolve(usData);
-//             } else {
-//                 resolve(chinaData);
-//             }
-//         }, 2000); // 2 seconds delay
-//     });
-// };
-
 
 export {
     capitalize, handleNewsTitle, handelNewsDescription, calculatePublishTime, handleNewsContent, getCountryArticleIndexArray,

@@ -4,7 +4,7 @@ import { navbarDropdownStyle } from "../Style"
 
 export default function Navbar(props) {
     // Destructuring props
-    const { title, mode, switchMode } = props
+    const { title, mode, switchMode, setProgress } = props
 
     // State for collapsed navbar (mobile version)
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -15,16 +15,17 @@ export default function Navbar(props) {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg p-2" style={{ ...(mode.theme === "light" ? { backgroundColor: "#b7e4c7", color: "black", boxShadow: "0 10px 50px rgba(0, 0, 0, 0.9)" } : { backgroundColor: "#212529", color: "white", boxShadow: "0 10px 50px rgba(167, 163, 163, 0.6)" }) }}>
+        <nav className="navbar navbar-expand-lg p-2 fixed-top" style={{ ...(mode.theme === "light" ? { backgroundColor: "#b7e4c7", color: "black", boxShadow: "0 10px 50px rgba(0, 0, 0, 0.9)" } : { backgroundColor: "#212529", color: "white", boxShadow: "0 10px 50px rgba(167, 163, 163, 0.6)" }) }}>
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/" style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>{title}</Link>
+                <Link className="navbar-brand" to="/"  onClick={() => setProgress(prev => prev + 50)}
+                    style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>{title}</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={collapsedNavbar}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse mx-2" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className={`nav-item  ${isCollapsed ? "" : "mx-2"}`}>
-                            <Link className="nav-link link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" aria-current="page" to="/news" style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>All News</Link>
+                            <Link className="nav-link link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" aria-current="page" to="/news" onClick={() => setProgress(prev => prev + 50)} style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>All News</Link>
                         </li>
                         <li className={`nav-item  ${isCollapsed ? "" : "mx-2"}`}>
                             <div className="dropdown">
@@ -38,24 +39,13 @@ export default function Navbar(props) {
                                         ...(isCollapsed ? { paddingLeft: "0" } : {}),
                                         ...(mode.theme === "light" ? { color: "black" } : { color: "white" })
                                     }}>
-                                    General News Category
+                                    Category General
                                 </button>
                                 <ul className="dropdown-menu" style={{ ...(mode.theme === "light" ? { backgroundColor: "white", color: "black" } : { backgroundColor: "#212529", color: "white" }) }}>
                                     <li>
                                         <NavLink
                                             className={({ isActive }) => isActive ? "active dropdown-item" : "dropdown-item"}
-                                            to="/news/category/India/general"
-                                            style={({ isActive }) =>
-                                                navbarDropdownStyle(isActive, mode)
-                                            }
-                                        >
-                                            General India
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            className={({ isActive }) => isActive ? "active dropdown-item" : "dropdown-item"}
-                                            to="/news/category/US/general"
+                                            to="/news/category/US/general" onClick={() => setProgress(prev => prev + 50)}
                                             style={({ isActive }) =>
                                                 navbarDropdownStyle(isActive, mode)
                                             }
@@ -66,7 +56,7 @@ export default function Navbar(props) {
                                     <li>
                                         <NavLink
                                             className={({ isActive }) => isActive ? "active dropdown-item" : "dropdown-item"}
-                                            to="/news/category/China/general"
+                                            to="/news/category/China/general" onClick={() => setProgress(prev => prev + 50)}
                                             style={({ isActive }) =>
                                                 navbarDropdownStyle(isActive, mode)
                                             }
@@ -78,7 +68,47 @@ export default function Navbar(props) {
                             </div>
                         </li>
                         <li className={`nav-item  ${isCollapsed ? "" : "mx-2"}`}>
-                            <Link className="nav-link" to="/about" style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>About</Link>
+                            <div className="dropdown">
+                                <button className="btn btn-light dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    style={{
+                                        background: "transparent",
+                                        border: "transparent",
+                                        ...(isCollapsed ? { paddingLeft: "0" } : {}),
+                                        ...(mode.theme === "light" ? { color: "black" } : { color: "white" })
+                                    }}>
+                                    Category Business
+                                </button>
+                                <ul className="dropdown-menu" style={{ ...(mode.theme === "light" ? { backgroundColor: "white", color: "black" } : { backgroundColor: "#212529", color: "white" }) }}>
+                                    <li>
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "active dropdown-item" : "dropdown-item"}
+                                            to="/news/category/US/business" onClick={() => setProgress(prev => prev + 50)}
+                                            style={({ isActive }) =>
+                                                navbarDropdownStyle(isActive, mode)
+                                            }
+                                        >
+                                            Business US
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className={({ isActive }) => isActive ? "active dropdown-item" : "dropdown-item"}
+                                            to="/news/category/China/business" onClick={() => setProgress(prev => prev + 50)}
+                                            style={({ isActive }) =>
+                                                navbarDropdownStyle(isActive, mode)
+                                            }
+                                        >
+                                            Business China
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li className={`nav-item  ${isCollapsed ? "" : "mx-2"}`}>
+                            <Link className="nav-link" to="/about" onClick={() => setProgress(prev => prev + 50)} style={{ ...(mode.theme === "light" ? { color: "black" } : { color: "white" }) }}>About</Link>
                         </li>
                     </ul>
                     <form className={`d-flex ${isCollapsed ? "" : "mx-2"}`} role="search">

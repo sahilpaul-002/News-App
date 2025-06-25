@@ -7,9 +7,10 @@ import { fetchAllNewsData } from "../fetchData";
 export default function LandingNews(props) {
     const { mode } = props;
 
+
     // Set the information to show in the news item card
     const [newsRowInfo, setnewsRowInfo] = useState({
-        countryName: "India",
+        countryName: "US",
         articles: null
     });
 
@@ -37,6 +38,7 @@ export default function LandingNews(props) {
         if (newsRowInfo.articles === null) {
             const loadArticles = async () => {
                 const data = await fetchAllNewsData(newsRowInfo.countryName, 12);
+                setTotalResults(data.totalResults);
                 if (data.status === "error") {
                     console.log(`Error section - Landing page ${newsRowInfo.countryName} articles ; Status : ${data.status}`);
                     console.log(`Error code: ${data.code}`);
@@ -46,6 +48,7 @@ export default function LandingNews(props) {
                     }, 2000);
                 }
                 else if (data.status === "ok" && data.totalResults > 0) {
+                    setTotalArticlesFetched(prev => prev+data.articles.length)
                     setnewsRowInfo(prev => ({
                         ...prev,
                         articles: data.articles
@@ -71,7 +74,7 @@ export default function LandingNews(props) {
         setIsMouseOver(country);
     };
     // Focus (active element) effect styling
-    const [isFocus, setIsFocus] = useState("India");
+    const [isFocus, setIsFocus] = useState("US");
     // Fucntion to set country for focus element
     const handleFocus = (country) => {
         setIsFocus(country);
@@ -205,6 +208,7 @@ export default function LandingNews(props) {
                     }, 2000);
                 }
                 else if (data.status === "ok" && data.totalResults > 0 && Array.isArray(data.articles)) {
+                    setTotalArticlesFetched(prev => prev+data.articles.length)
                     setnewsRowInfo(prev => ({
                         ...prev,
                         articles: data.articles
@@ -222,6 +226,11 @@ export default function LandingNews(props) {
         }
     }, [loadMoreCountry, newsRowInfo.countryName, newsRowInfo.articles, pageSize])
 
+    // Store the total noumber of articles for the category
+    const [totalArticles, setTotalResults] = useState(null);
+    // State to store the total results fetched from the api
+    const [totalArticlesFetched, setTotalArticlesFetched] = useState(0);
+
     return (
         <>
             <h1 className='my-3'>Top Headlines</h1>
@@ -230,9 +239,6 @@ export default function LandingNews(props) {
             {/*   Country Tabs  */}
             <div className="container mb-3">
                 <ul className="nav nav-tabs" htmlFor="nav-tabContent" id='nav-countryTabs' aria-controls={`nav-${newsRowInfo.countryName}`} style={{ border: "none" }}>
-                    <li className="nav-item mx-1">
-                        <button type="button" className={`btn btn-light ${newsRowInfo.countryName === "India" ? "show active" : ""}`} aria-current="page" role="tab" id='tab-India' onClick={() => handleCountry("India")} onMouseOver={() => handleMouseOver("India")} onMouseOut={() => handleMouseOut()} onFocus={() => handleFocus("India")} style={countryButtonStyle("India", isMouseOver, isFocus, mode)}>India</button>
-                    </li>
                     <li className="nav-item mx-1">
                         <button type="button" className={`btn btn-light ${newsRowInfo.countryName === "US" ? "show active" : ""}`} aria-current="page" role="tab" id='tab-US' onClick={() => handleCountry("US")} onMouseOver={() => handleMouseOver("US")} onMouseOut={() => handleMouseOut()} onFocus={() => handleFocus("US")} style={countryButtonStyle("US", isMouseOver, isFocus, mode)}>US</button>
                     </li>
@@ -290,8 +296,8 @@ export default function LandingNews(props) {
                     </div>
                 ) : (
                     <div className="container d-flex justify-content-center my-3">
-                        <div className={`btn ${mode.theme === "light" ? "btn btn-danger" : "btn-outline-danger"} p-2`}
-                            role="button" onClick={() => setLoadMoreCoutnry(newsRowInfo.countryName)} style={{ color: "white", borderColor: "white" }}>View More</div>
+                        <button className={`btn ${mode.theme === "light" ? "btn btn-danger" : "btn-outline-danger"} p-2`}
+                            disabled={totalArticlesFetched>totalArticles?true:false} onClick={() => setLoadMoreCoutnry(newsRowInfo.countryName)} style={{ color: "white", borderColor: "white" }}>View More</button>
                     </div>
                 )
             ) : 

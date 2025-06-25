@@ -5,11 +5,18 @@ import { NavLink, useOutletContext } from 'react-router-dom';
 import NewsItem from "./NewsItem";
 
 export default function News() {
-    const { mode } = useOutletContext();
+    const { mode, progress, setProgress } = useOutletContext();
+
+    // useEffect with empty dependency to ensure that the useEffect runs when the UI is rendered but only once
+    useEffect(() => {
+        if (progress > 0 && progress < 100) {
+            setProgress(prev => prev + 50)
+        }
+    }, [progress, setProgress])
 
     // Set the information to show in the news item card
     const [newsCardInfo, setnewsCardInfo] = useState({
-        countryName: "India",
+        countryName: "US",
         newsArticles: null
     });
 
@@ -29,7 +36,7 @@ export default function News() {
         setIsMouseOver(country);
     };
     // Focus (active element) effect styling
-    const [isFocus, setIsFocus] = useState("India");
+    const [isFocus, setIsFocus] = useState("US");
     // Fucntion to set country for focus element
     const handleFocus = (country) => {
         setIsFocus(country);
@@ -52,7 +59,7 @@ export default function News() {
                         console.log(`Error code: ${data.code}`)
                         console.log(`Error message - ${data.message}`);
                         // setNoNews(true);
-                        setTimeout(() => setNoNews(true), 3000);
+                        setTimeout(() => setNoNews(true), 2000);
                     }
                     else if (data[category].status === "ok" && data[category].totalResults > 0) {
                         setnewsCardInfo(prev => ({
@@ -90,16 +97,13 @@ export default function News() {
     }, [noNews, newsCardInfo.countryName])
 
     return (
-        <div className='container px-2 py-3'>
+        <div className='container px-2 py-3 mt-5'>
             <h1>Top Headlines</h1>
             <hr className='my-3' style={{ ...(mode.theme === "light" ? { border: "none", height: "3px", backgroundColor: "black", opacity: "0.8" } : { border: "none", height: "3px", backgroundColor: "white", opacity: "08" }) }} />
 
             {/*   Country Tabs   */}
             <div className="container">
                 <ul className="nav nav-tabs" htmlFor="nav-tabContent" id='nav-countryTabs' aria-controls='nav-India' style={{ border: "none" }}>
-                    <li className="nav-item">
-                        <button type="button" className={`btn btn-light ${newsCardInfo.countryName === "India" ? "show active" : ""}`} aria-current="page" role="tab" id='tab-India' onClick={() => handleCountry("India")} onMouseOver={() => handleMouseOver("India")} onMouseOut={() => handleMouseOut()} onFocus={() => handleFocus("India")} style={countryButtonStyle("India", isMouseOver, isFocus, mode)}>India</button>
-                    </li>
                     <li className="nav-item">
                         <button type="button" className={`btn btn-light ${newsCardInfo.countryName === "US" ? "show active" : ""}`} aria-current="page" role="tab" id='tab-US' onClick={() => handleCountry("US")} onMouseOver={() => handleMouseOver("US")} onMouseOut={() => handleMouseOut()} onFocus={() => handleFocus("US")} style={countryButtonStyle("US", isMouseOver, isFocus, mode)}>USA</button>
                     </li>
@@ -116,12 +120,12 @@ export default function News() {
                             role="tabpanel" aria-labelledby={`tab-${newsCardInfo.countryName}-${category}`}>
                             {/*   News cards display   */}
                             {ObjectArticles !== null ? (
-                                <div className="container row d-flex justify-content-center">
-                                    <div className="row w-auto">
+                                <div className="container">
+                                    <div className="row justify-content-center">
                                         {ObjectArticles.articles.slice(0, 3).map((article, idx) => (
-                                            <div className="col-md-4 mb-3" key={idx}>
+                                            <div className="col-md-4 d-flex justify-content-center mb-4" key={idx}>
                                                 <NewsItem
-                                                    urlToImage={article.urlToImage}
+                                                    urlToImage={article.urlToImage || "/Images/generalNews.jpeg"}
                                                     title={article.title}
                                                     description={article.description}
                                                     category={category}
@@ -132,11 +136,31 @@ export default function News() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="container d-flex justify-content-center my-3">
-                                        <NavLink className={`btn ${mode.theme === "light" ? "btn btn-success" : "btn-outline-success"} p-2`}
-                                            to={`category/${newsCardInfo.countryName}/${category}`} role="button" style={{ color: "white", borderColor: "white" }}>View More</NavLink>
+
+                                    <div className="d-flex justify-content-center my-3">
+                                        <NavLink
+                                            className={`btn ${mode.theme === "light" ? "btn btn-success" : "btn-outline-success"} p-2`}
+                                            to={`category/${newsCardInfo.countryName}/${category}`}
+                                            role="button"
+                                            style={{ color: "white", borderColor: "white" }}
+                                        >
+                                            View More
+                                        </NavLink>
                                     </div>
-                                    {i !== arr.length - 1 && (<hr className='my-3' style={{ ...(mode.theme === "light" ? { border: "none", margin: "auto", height: "1px", width: "80%", backgroundColor: "black", opacity: "0.8" } : { border: "none", margin: "auto", height: "1px", width: "80%", backgroundColor: "white", opacity: "08" }) }} />)}
+
+                                    {i !== arr.length - 1 && (
+                                        <hr
+                                            className="my-3"
+                                            style={{
+                                                border: "none",
+                                                margin: "auto",
+                                                height: "1px",
+                                                width: "80%",
+                                                backgroundColor: mode.theme === "light" ? "black" : "white",
+                                                opacity: mode.theme === "light" ? "0.8" : "0.8",
+                                            }}
+                                        />
+                                    )}
                                 </div>
                             ) : (
                                 <div className="d-flex justify-content-center">

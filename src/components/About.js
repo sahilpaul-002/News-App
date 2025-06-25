@@ -6,7 +6,15 @@ import { bodyCardStyle } from "../Style";
 import PropTypes from 'prop-types';
 
 export default function About() {
-    const { mode } = useOutletContext();
+    const { mode, progress, setProgress } = useOutletContext();
+
+    // useEffect with empty dependency to ensure that the useEffect runs when the UI is rendered but only once
+    useEffect(() =>{
+        if (progress > 0 && progress < 100)
+        {
+            setProgress(prev => prev+50)
+        }
+    },[progress, setProgress])
 
     const aboutInfo = [
         {
@@ -15,7 +23,7 @@ export default function About() {
         },
         {
             title: "🌍 Country-Specific News Tabs",
-            description: "Browse news tailored for India, the US, and China. The categorized tabs offer users localized content in a seamless tabbed interface."
+            description: "Browse news tailored for the US, and China. The categorized tabs offer users localized content in a seamless tabbed interface."
         },
         {
             title: "🗂️ News Categories at a Glance",
@@ -111,7 +119,7 @@ export default function About() {
     }, [expandedCards]);
 
     return (
-        <div className="container py-5 px-5 rounded" style={outerCardStyle(mode)}>
+        <div className="container mt-5 py-4 px-5 rounded" style={outerCardStyle(mode)}>
             <h2 className="my-3">About Us</h2>
             <div className="accordion" id="accordionExample">
 
