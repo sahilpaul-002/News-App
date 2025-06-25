@@ -50,7 +50,7 @@ export default function News() {
         // Only run when articles is null (i.e., loading state)
         if (newsCardInfo.newsArticles === null) {
             const loadArticles = async () => {
-                const data = await fetchAllCategoryNewsData(newsCardInfo.countryName, 5);
+                const data = await fetchAllCategoryNewsData(newsCardInfo.countryName, 4);
                 const categories = ["business", "entertainment", "general", "health", "science", "sports", "technology"]
                 for (let category of categories) {
 

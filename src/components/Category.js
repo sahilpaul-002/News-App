@@ -65,8 +65,12 @@ export default function Category() {
 
   // Store the total noumber of articles for the category
   const totalArticles = data.totalResults;
+  console.log(totalArticles)
   // State to store the total results fetched from the api
-  const [totalArticlesFetched, setTotalArticlesFetched] = useState(0);
+  const [totalArticlesFetched, setTotalArticlesFetched] = useState(6);
+  useEffect(() => {
+    console.log(totalArticlesFetched)
+  })
 
   return (
     <div className="container mt-5">

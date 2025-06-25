@@ -39,6 +39,7 @@ export default function LandingNews(props) {
             const loadArticles = async () => {
                 const data = await fetchAllNewsData(newsRowInfo.countryName, 12);
                 setTotalResults(data.totalResults);
+                console.log(data)
                 if (data.status === "error") {
                     console.log(`Error section - Landing page ${newsRowInfo.countryName} articles ; Status : ${data.status}`);
                     console.log(`Error code: ${data.code}`);
