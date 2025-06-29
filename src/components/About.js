@@ -51,11 +51,7 @@ export default function About() {
         },
         {
             title: "🔍 Instant Search Bar",
-            description: "The search bar allows users to quickly find specific headlines or stories, enhancing navigability and efficiency."
-        },
-        {
-            title: "📱 Responsive & Accessible Design",
-            description: "The app is optimized for multiple screen sizes, ensuring accessibility across desktops, tablets, and mobile devices."
+            description: "The search bar allows users to quickly find specific news or stories, enhancing navigability and efficiency."
         }
     ];
 

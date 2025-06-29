@@ -73,7 +73,6 @@ const newsLinkStyle = (isNewsLinkMouseOver, mode) => {
 
 // Set style for article title
 const articleTitleStyle = (idx, idxArray) => {
-    // let idxArray = getCountryArticleIndexArray(country, expandedIndexes)
     if (idxArray.includes(idx)) {
         return {
             backgroundColor: "#D84040",

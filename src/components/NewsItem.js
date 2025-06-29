@@ -21,9 +21,9 @@ export default function NewsItem(props) {
                     <div className="card-body">
                         <h6 className="card-title" style={{height: "3rem"}}>{handleNewsTitle(title)}</h6>
                         <h6 className="card-subtitle my-2 text-body-secondary pt-2"><u>{capitalize(category)}</u></h6>
-                        <p className="card-text" data-bs-toggle="tooltip" data-bs-placement="bottom" 
+                        <p className="card-text mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" 
                             data-bs-title={description} style={{height: "3rem"}}>{handelNewsDescription(description)}</p>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "2rem"}}>
                             <a href={url} className="btn btn-danger" target="_blank" rel="noopener noreferrer">Read More</a>
                             <p className="mb-0 fs-6">{publishedAt.slice(0, 10).split("").join("").split("-").reverse().join("-")}</p>
                         </div>
